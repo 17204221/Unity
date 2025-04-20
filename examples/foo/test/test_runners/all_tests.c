@@ -2,10 +2,10 @@
 
 static void RunAllTests(void)
 {
-  RUN_TEST_GROUP(Foo);
+  RUN_TEST_GROUP(DateProblem);
 }
 
 int main(int argc, const char * argv[])
 {
   return UnityMain(argc, argv, RunAllTests);
-}
+} 

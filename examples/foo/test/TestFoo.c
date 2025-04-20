@@ -1,26 +1,33 @@
-#include "foo.h"
+#include "DateProblem.h"
 #include "unity.h"
 #include "unity_fixture.h"
 
-TEST_GROUP(Foo);
+TEST_GROUP(DateProblem);
 
-TEST_SETUP(Foo)
+TEST_SETUP(DateProblem)
 {
 }
 
-TEST_TEAR_DOWN(Foo)
+TEST_TEAR_DOWN(DateProblem)
 {
 }
 
-TEST(Foo, TestFoo1)
+TEST(DateProblem, NextDate1)
 {
-  // All of these should pass
-  TEST_ASSERT_EQUAL(-2, foo(1,2));
-  TEST_ASSERT_EQUAL(-1, foo(2,2));
+  TEST_ASSERT_EQUAL_STRING("01/01/1901", NextDate(31, 12, 1900));
+  TEST_ASSERT_EQUAL_STRING("01/02/1900", NextDate(31, 1, 1900));
+  TEST_ASSERT_EQUAL_STRING("01/03/1900", NextDate(28, 2, 1900));
 }
 
-TEST(Foo, TestFoo2)
+TEST(DateProblem, NextDate2)
 {
-  // This test will fail
+  TEST_ASSERT_EQUAL_STRING("01/01/2000", NextDate(31, 12, 1999));
+  TEST_ASSERT_EQUAL_STRING("01/02/2000", NextDate(31, 1, 2000));
+  TEST_ASSERT_EQUAL_STRING("01/03/2000", NextDate(29, 2, 2000));
+}
+
+TEST(DateProblem, NextDate2)
+{
+
   TEST_ASSERT_EQUAL(2, foo(1,2));
 }
