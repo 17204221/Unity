@@ -16,8 +16,11 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y valgrind
 
+      - name: make clean
+        run: "make clean"
+        
       - name: make
-        run: "make clean; make"
+        run: "make"
 
       - name: cppcheck
         run: "make cppcheck"
