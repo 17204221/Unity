@@ -9,6 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./examples/NextDate
+        
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -18,7 +22,6 @@ jobs:
 
       - name: make clean
         run: "make clean"
-        working-directory: ./examples/NextDate
         
       - name: make
         run: "make"
