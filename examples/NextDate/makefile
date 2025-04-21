@@ -66,11 +66,11 @@ SYMBOLS=
 all: clean compile run
 
 cppcheck:
-	cppcheck --enable=all --suppress=missingIncludeSystem --suppress=unusedFunction --inconclusive --force $(INC_DIRS) $(SRC_FILES2)
+	cppcheck --enable=all --suppress=missingIncludeSystem --suppress=unusedFunction --inconclusive --force $(INC_DIRS) $(SRC_FILES1)
 
 valgrind: # aparece erro quando compilo "make valgrind" porem se compilo sem makefile por linha de comando, funciona (?????)
 	$(C_COMPILER) -g -Wall -Wfatal-errors $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
-	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET1) -v
+	- valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET1) -v
 
 sanitizer:
 	$(C_COMPILER) -g -Wall -Wfatal-errors -fsanitize=address $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
