@@ -53,13 +53,20 @@ SRC_FILES1=\
   test/DateTests.c \
   test/test_runners/TestDate_Runner.c \
   test/test_runners/all_tests.c
+
+SRC_FILES2=\
+  src/DateProblem.c \
+  test/DateTests.c \
+  test/test_runners/TestDate_Runner.c \
+  test/test_runners/all_tests.c
+
 INC_DIRS=-Isrc -I$(UNITY_ROOT)/src -I$(UNITY_ROOT)/extras/fixture/src
 SYMBOLS=
 
 all: clean compile run
 
 cppcheck:
-	cppcheck --enable=all --suppress=missingIncludeSystem --suppress=unusedFunction --inconclusive $(INC_DIRS) $(SRC_FILES1)
+	cppcheck --enable=all --suppress=missingIncludeSystem --suppress=unusedFunction --inconclusive --force $(INC_DIRS) $(SRC_FILES2)
 
 valgrind: # aparece erro quando compilo "make valgrind" porem se compilo sem makefile por linha de comando, funciona (?????)
 	$(C_COMPILER) -g -Wall -Wfatal-errors $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
