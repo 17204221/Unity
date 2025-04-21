@@ -16,19 +16,16 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y valgrind
 
-      - name: Compile project
-        run: make compile
+      - name: make
+        run: "make clean; make"
 
-      - name: Run tests
-        run: make run
+      - name: cppcheck
+        run: "make cppcheck"
 
-      - name: Run with cppcheck
-        run: make cppcheck
+      - name: Valgrind
+        run: "make valgrind"
 
-      - name: Run with Valgrind
-        run: make valgrind
-
-      - name: Run with Sanitizer
+      - name: Sanitizer
         env:
           ASAN_OPTIONS: detect_leaks=1
-        run: make sanitizer
+        run: "make sanitizer"
