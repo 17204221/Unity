@@ -74,7 +74,7 @@ valgrind: # aparece erro quando compilo "make valgrind" porem se compilo sem mak
 
 sanitizer:
 	$(C_COMPILER) -g -Wall -Wfatal-errors -fsanitize=address $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
-	./$(TARGET1) -v
+	./$(TARGET1) -verbose
 
 compile:
 	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1)	
