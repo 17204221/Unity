@@ -18,7 +18,7 @@ jobs:
 
       - name: make clean
         run: "make clean"
-        working-directory: ./Unity/examples/NextDate
+        working-directory: ./examples/NextDate
         
       - name: make
         run: "make"
