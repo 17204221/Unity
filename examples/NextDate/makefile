@@ -27,6 +27,8 @@ endif
 
 UNITY_ROOT=../..
 
+ARGS = "2 5 2025"
+
 CFLAGS=-std=c99
 CFLAGS += -Wall
 CFLAGS += -Wextra
@@ -56,8 +58,19 @@ SYMBOLS=
 
 all: clean compile run
 
+cppcheck:
+	cppcheck --enable=all --suppress=missingIncludeSystem --suppress=unusedFunction --inconclusive $(INC_DIRS) $(SRC_FILES1)
+
+valgrind: # aparece erro quando compilo "make valgrind" porem se compilo sem makefile por linha de comando, funciona (?????)
+	$(C_COMPILER) -g -Wall -Wfatal-errors $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET1) -v
+
+sanitizer:
+	$(C_COMPILER) -g -Wall -Wfatal-errors -fsanitize=address $(INC_DIRS) $(SRC_FILES1) -o $(TARGET1)
+	./$(TARGET1) -v
+
 compile:
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1)	
 
 run:
 	- ./$(TARGET1) -v
