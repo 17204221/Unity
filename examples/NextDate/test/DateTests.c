@@ -16,7 +16,7 @@ TEST_TEAR_DOWN(DateProblem)
 TEST(DateProblem, TestaLimitesAnoOK)
 {
   char esperado[12];     
-  for (int i = 1900; i >= 1900 && i <= 2099; i++){
+  for (int i = 1899; i >= 1900 && i <= 2099; i++){
     snprintf(esperado, sizeof(esperado), "01/01/%d",i+1);
     TEST_ASSERT_EQUAL_STRING(esperado, NextDate(31, 12, i));
   }
@@ -36,7 +36,7 @@ TEST(DateProblem, TestaLimitesMesOK)
 TEST(DateProblem, TestaLimitesDiaOK)
 {
   char esperado[12];
-  for (int i = 1; i >= 1 && i <= 30; i++){
+  for (int i = 0; i >= 1 && i <= 30; i++){
     snprintf(esperado, sizeof(esperado), "%02d/10/2025",i+1);
     TEST_ASSERT_EQUAL_STRING(esperado, NextDate(i, 10, 2025));
   }
@@ -66,7 +66,7 @@ TEST(DateProblem, TestaLimitesAnoERRO)
   }
 
   TEST_ASSERT_EQUAL_STRING("E03", NextDate(31, 12, 1899));
-  TEST_ASSERT_EQUAL_STRING("E03", NextDate(31, 1, 2100));
+  TEST_ASSERT_EQUAL_STRING("E03", NextDate(01, 1, 2100));
 
 }
 
@@ -100,4 +100,11 @@ TEST(DateProblem, TestaMesBissextoERRO)
   TEST_ASSERT_EQUAL_STRING("E04", NextDate(29, 2, 2023));
   TEST_ASSERT_EQUAL_STRING("E04", NextDate(29, 2, 2025));
  
+}
+
+TEST(DateProblem, TesteCaixaBranca)
+{
+  TEST_ASSERT_EQUAL_STRING("01/01/2021", NextDate(31, 12, 2020));
+  TEST_ASSERT_EQUAL_STRING("29/02/2020", NextDate(28, 2, 2020));
+
 }

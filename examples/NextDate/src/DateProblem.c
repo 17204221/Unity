@@ -10,7 +10,7 @@ int ehBissexto(int ano) {
 
 // Funcao calcula a proxima data
 char* NextDate(int dia, int mes, int ano) {
-    static char resultado[11];  // Buffer para "DD/MM/AAAA" + '\0'
+    static char resultado[11];  // Buffer para DD/MM/AAAA + \0
     //static char lixo[50];
     int diasPorMes[] = { 0, 31, 28, 31, 30, 31, 30,
                          31, 31, 30, 31, 30, 31 }; 

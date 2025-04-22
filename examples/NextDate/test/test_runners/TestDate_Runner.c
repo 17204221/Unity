@@ -12,4 +12,5 @@ TEST_GROUP_RUNNER(DateProblem)
   RUN_TEST_CASE(DateProblem, TestaLimitesMesERRO);
   RUN_TEST_CASE(DateProblem, TestaLimitesDiaERRO);
   RUN_TEST_CASE(DateProblem, TestaMesBissextoERRO);
+  RUN_TEST_CASE(DateProblem, TesteCaixaBranca);
 }
