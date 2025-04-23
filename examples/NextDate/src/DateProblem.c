@@ -38,11 +38,11 @@ char* NextDate(int dia, int mes, int ano) {
     // Incrementa o dia
     dia++;
     if (dia > diasPorMes[mes]) {
-        dia = 1;
+        dia = 1; 
         mes++;
         if (mes > 12) {
             mes = 1;
-            ano++;
+            ano++
         }
     }
 
