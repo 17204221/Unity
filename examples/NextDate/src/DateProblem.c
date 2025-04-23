@@ -42,7 +42,7 @@ char* NextDate(int dia, int mes, int ano) {
         mes++;
         if (mes > 12) {
             mes = 1;
-            ano++
+            ano++;
         }
     }
 
